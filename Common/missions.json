@@ -1,0 +1,37 @@
+{
+  "5": {
+    "spies": 2,
+    "players": [2, 3, 2, 3, 3],
+    "twoFailsOnFour": false
+  },
+
+  "6": {
+    "spies": 2,
+    "players": [2, 3, 3, 3, 4],
+    "twoFailsOnFour": false
+  },
+
+  "7": {
+    "spies": 3,
+    "players": [2, 3, 3, 4, 4],
+    "twoFailsOnFour": true
+  },
+
+  "8": {
+    "spies": 3,
+    "players": [3, 4, 4, 5, 5],
+    "twoFailsOnFour": true
+  },
+
+  "9": {
+    "spies": 3,
+    "players": [3, 4, 4, 5, 5],
+    "twoFailsOnFour": true
+  },
+
+  "10": {
+    "spies": 4,
+    "players": [3, 4, 4, 5, 5],
+    "twoFailsOnFour": true
+  }
+}
