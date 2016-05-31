@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/snowguy13/resistance",
   "dependencies": {
+    "express": "^4.13.4",
     "ws": "^1.1.0"
   }
 }
