@@ -1,0 +1,29 @@
+{
+  "name": "resistance",
+  "version": "0.0.0",
+  "description": "Server-side implementation of The Resistance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snowguy13/resistance.git"
+  },
+  "keywords": [
+    "\"The",
+    "Resistance\"",
+    "deception",
+    "agent",
+    "spy",
+    "resistance",
+    "strategy",
+    "deduction"
+  ],
+  "author": "Tom Scallon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snowguy13/resistance/issues"
+  },
+  "homepage": "https://github.com/snowguy13/resistance"
+}
