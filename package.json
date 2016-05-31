@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/snowguy13/resistance/issues"
   },
-  "homepage": "https://github.com/snowguy13/resistance"
+  "homepage": "https://github.com/snowguy13/resistance",
+  "dependencies": {
+    "ws": "^1.1.0"
+  }
 }
