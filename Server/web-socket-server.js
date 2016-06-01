@@ -1,13 +1,5 @@
-var WebSocketServer = require("ws").Server,
-    server,
-    OPTIONS = {
-      port: 80
-    };
+const WebSocketServer = require("ws").Server;
+const httpServer = require("./http-server");
+const server = new WebSocketServer({ server: httpServer });
 
-
-
-module.exports = {
-  start: () => {
-    server = new WebSocketServer( OPTIONS );
-  }
-};
+module.exports = server;
