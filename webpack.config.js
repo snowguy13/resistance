@@ -2,7 +2,7 @@ const Webpack = require("webpack");
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/app.jsx',
+  entry: './src/app.js',
   output: {
     path: './public',
     filename: 'app.bundle.js',

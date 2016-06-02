@@ -4,7 +4,9 @@
   "description": "Server-side implementation of The Resistance.",
   "main": "Server/index.js",
   "scripts": {
-    "build:common": "babel Common -d Client/src/common && babel Common -d Server/src/common"
+    "build":  "webpack",
+    "server": "node server/index.js",
+    "test":   "npm run build && npm run server"
   },
   "repository": {
     "type": "git",
