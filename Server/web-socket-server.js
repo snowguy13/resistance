@@ -3,21 +3,28 @@ const httpServer = require("./http-server");
 const server = new WebSocket.Server({ server: httpServer });
 
 const onConnection = (ws) => {
-  console.log("Received new connection: ", ws);
+  console.log("Received new connection");
+  ws.send("Welcome to the server!");
+  server.broadcast("New connection received.");
 };
 
 const onMessage = (ws, message) => {
-  
+
 };
 
-WebSocket.prototype.sendJson = (data) => {
+WebSocket.prototype.sendJson = function(data) {
   this.send( JSON.stringify(data) );
 };
 
-WebSocket.Server.prototype.broadcast = (data) => {
+WebSocket.Server.prototype.broadcast = function(data) {
   this.clients.forEach(client => {
     client.sendJson( data );
   });
 };
+
+server.on('connection', (ws) => {
+  onConnection( ws );
+  ws.on('message', (message) => onMessage( ws, message ));
+});
 
 module.exports = server;
