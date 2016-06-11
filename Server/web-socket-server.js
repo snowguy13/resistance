@@ -4,8 +4,14 @@ const server = new WebSocket.Server({ server: httpServer });
 
 const onConnection = (ws) => {
   console.log("Received new connection");
-  ws.send("Welcome to the server!");
-  server.broadcast("New connection received.");
+  ws.sendJson({
+    type: 'info',
+    message: 'Welcome to the server!'
+  });
+  server.broadcast({
+    type: 'info',
+    message: 'New connection received'
+  });
 };
 
 const onMessage = (ws, message) => {

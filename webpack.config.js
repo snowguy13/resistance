@@ -13,7 +13,13 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader',
       query: {
-        presets: ['react', 'es2015']
+        presets: ['es2015', 'react'],
+        plugins: [
+          'transform-react-display-name',
+          'transform-class-properties',
+          'transform-es2015-destructuring',
+          'transform-object-rest-spread'
+        ]
       }
     }]
   },
@@ -26,5 +32,8 @@ module.exports = {
         comments: false,
       },
     }),
-  ]
+  ],
+  resolve: {
+    extensions: [ '', '.js', '.jsx' ]
+  }
 };
