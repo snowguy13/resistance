@@ -5,7 +5,6 @@ const SOCKET_EVENTS = ['open', 'message', 'error', 'close'];
 const SOCKET_PROPS = ['socketUrl', 'socketBindings'];
 
 const LinkWebSocket = ( WrappedComponent ) => {
-  console.log(WrappedComponent.displayName);
   class LinkWebSocket extends Component {
     static propTypes = {
       socketUrl: PropTypes.string.isRequired,
