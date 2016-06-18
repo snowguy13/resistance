@@ -33,9 +33,26 @@ const LinkWebSocket = ( WrappedComponent ) => {
       }
     }
 
+    sendSocketMessage( message ) {
+      // If the message is an object, stringify it
+      if( typeof message === 'object' ) {
+        message = JSON.stringify( object );
+      }
+
+      // If the message isn't a string, throw an error
+      if( typeof message !== 'string' ) {
+        throw new TypeError('Can only send an object or string over the WebSocket.'
+          + `Can't send '${message}'.`);
+      }
+    }
+
     render() {
-      const props = except( this.props, SOCKET_PROPS );
-      props.socket = this.socket;
+      const props = {
+        ...except( this.props, SOCKET_PROPS ),
+        socket: this.socket,
+        sendSocketMessage: this.sendSocketMessage,
+      };
+
       return (<WrappedComponent {...props} />);
     }
   };
