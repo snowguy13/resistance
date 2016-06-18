@@ -7,6 +7,8 @@ import { map } from '../utility/object';
 import { Classes } from './container-types';
 
 class Resistance extends Component {
+  static displayName = 'Resistance'
+  
   static propTypes = {
     messages: PropTypes.array
   }
@@ -22,7 +24,7 @@ class Resistance extends Component {
   }
 };
 
-Resistance.displayName = 'Resistance';
+
 
 const mapStateToProps = (state) => {
   return {
