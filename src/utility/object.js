@@ -1,4 +1,4 @@
-export const except = function( obj, props ) {
+export function except( obj, props ) {
   var ret = { ...obj };
 
   props.forEach( prop => {
@@ -8,4 +8,14 @@ export const except = function( obj, props ) {
   return ret;
 };
 
-export default { except };
+export function map( obj, fn ) {
+  const ret = {};
+
+  for( var prop in obj ) {
+    ret[ prop ] = fn.call( ret, obj[prop], prop );
+  }
+
+  return ret;
+};
+
+export default { except, map };

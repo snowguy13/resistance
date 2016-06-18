@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Resistance from './components/resistance';
 import reducers from './reducers/all';
-import { open, message, error, close } from './actions/sockets';
 
 // Grab a reference to the root element
 const root = document.getElementById('root');
@@ -17,8 +16,7 @@ if( !window.WebSocket ) {
   let store = createStore( reducers, {} );
   render(
     <Provider store={store}>
-      <Resistance socketUrl={`ws://${window.location.host}`}
-                  socketBindings={{ open, message, error, close }} />
+      <Resistance socketUrl={`ws://${window.location.host}`} />
     </Provider>,
     document.getElementById('root') );
 }
