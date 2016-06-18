@@ -4,10 +4,12 @@ const server = new WebSocket.Server({ server: httpServer });
 
 const onConnection = (ws) => {
   console.log("Received new connection");
+
   ws.sendJson({
     type: 'info',
     message: 'Welcome to the server!'
   });
+
   server.broadcast({
     type: 'info',
     message: 'New connection received'
@@ -17,6 +19,14 @@ const onConnection = (ws) => {
 const onMessage = (ws, message) => {
 
 };
+
+const onClose = (ws) => {
+  console.log('A connection was lost');
+  server.broadcast({
+    type: 'info',
+    message: 'Lost a connection'
+  });
+}
 
 WebSocket.prototype.sendJson = function(data) {
   this.send( JSON.stringify(data) );
@@ -31,6 +41,7 @@ WebSocket.Server.prototype.broadcast = function(data) {
 server.on('connection', (ws) => {
   onConnection( ws );
   ws.on('message', (message) => onMessage( ws, message ));
+  ws.on('close', () => onClose( ws ));
 });
 
 module.exports = server;

@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- basic styles until app is loaded -->
+  <style type='text/css'>
+    @import 'https://fonts.googleapis.com/css?family=Cairo:200,400,700';
+    body {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 100%;
+
+      margin: 0;
+      padding: 0;
+
+      font-family: 'Cairo';
+      color: #eee;
+      background-color: #341212;
+    }
+  </style>
 </head>
 <body>
-  <div id='root'>Gathering intel...</div>
+  <div id='root'>
+    <h1>Gathering intel...</h1>
+  </div>
   <script src='app.bundle.js'></script>
 </body>
 </html>
