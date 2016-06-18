@@ -1,8 +1,10 @@
+import './Resistance.scss';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import LinkWebSocket from './util/link-web-socket';
 import { open, message, error, close } from '../actions/sockets';
 import { map } from '../utility/object';
+import { Classes } from './container-types';
 
 class Resistance extends Component {
   static propTypes = {
@@ -10,17 +12,11 @@ class Resistance extends Component {
   }
 
   render() {
+    const Container = this.props.Container;
 
     return (
-      <div className="resistance">
-        Loaded -- messages are below!
-        <div className="messages">{
-          (this.props.messages || []).map( (message, i) =>
-            <div className="message" key={i}>
-              <strong>{ message.title }</strong><span>{ message.body }</span>
-            </div>
-          )
-        }</div>
+      <div className="Resistance">
+        { Container ? <Container /> : "Loading..." }
       </div>
     );
   }
@@ -30,7 +26,7 @@ Resistance.displayName = 'Resistance';
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    Container: Classes[ state.container ]
   };
 };
 

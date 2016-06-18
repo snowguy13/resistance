@@ -8,20 +8,26 @@ module.exports = {
     filename: 'app.bundle.js',
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015', 'react'],
-        plugins: [
-          'transform-react-display-name',
-          'transform-class-properties',
-          'transform-es2015-destructuring',
-          'transform-object-rest-spread'
-        ]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react'],
+          plugins: [
+            'transform-react-display-name',
+            'transform-class-properties',
+            'transform-es2015-destructuring',
+            'transform-object-rest-spread'
+          ]
+        }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'autoprefixer', 'sass']
       }
-    }]
+    ]
   },
   plugins: [
     new Webpack.optimize.UglifyJsPlugin({
