@@ -8,4 +8,7 @@ export function setContainer( containerType ) {
   }
 }
 
-export default { Sockets };
+export default {
+  SET_CONTAINER, setContainer,
+  Sockets
+};
