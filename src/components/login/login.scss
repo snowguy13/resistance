@@ -1,0 +1,22 @@
+.Login {
+  .Login__Buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .Login__Button {
+    flex: 1 0 auto;
+    margin: 5px;
+    padding: 10px;
+
+    font-size: 24px;
+    font-weight: 200;
+
+    color: white;
+    background-color: darken(#341212, 0.5);
+
+    border: none;
+    border-radius: 3px;
+  }
+}
