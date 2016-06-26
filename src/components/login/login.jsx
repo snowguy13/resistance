@@ -1,5 +1,6 @@
 import './login.scss';
 import React, { Component, PropTypes } from 'react';
+import Input from '../ui/input';
 
 class Login extends Component {
   static displayName = 'Login'
@@ -10,7 +11,13 @@ class Login extends Component {
         <div className="Login__Message">
           Please identify yourself.
         </div>
-        <div className="Login__Input">
+        <Input
+          name="Login__AgentID"
+          label="Agent ID" />
+        <Input
+          name="Login__AuthCode"
+          label="Auth Code" />
+        { /* <div className="Login__Input">
           <label for="Login__Username">
             Agent ID
           </label>
@@ -21,7 +28,7 @@ class Login extends Component {
             Auth Code
           </label>
           <input type="password" placeholder="Auth Code" />
-        </div>
+        </div> */ }
         <div className="Login__Buttons">
           <button className="Login__Button">Authenticate</button>
         </div>
