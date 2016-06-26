@@ -15,20 +15,9 @@ class Login extends Component {
           name="Login__AgentID"
           label="Agent ID" />
         <Input
+          type="password"
           name="Login__AuthCode"
           label="Auth Code" />
-        { /* <div className="Login__Input">
-          <label for="Login__Username">
-            Agent ID
-          </label>
-          <input type="text" placeholder="Agent ID" />
-        </div>
-        <div className="Login__Input">
-          <label for="Login__Password">
-            Auth Code
-          </label>
-          <input type="password" placeholder="Auth Code" />
-        </div> */ }
         <div className="Login__Buttons">
           <button className="Login__Button">Authenticate</button>
         </div>

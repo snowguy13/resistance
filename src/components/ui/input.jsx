@@ -85,21 +85,25 @@ class Input extends Component {
     input: this._onInput.bind(this),
   }
 
+  onLabelClick() {
+    findDOMNode(this.refs.input).focus();
+  }
+
   render() {
     const { name, label, type } = this.props;
     const { focused, value } = this.state;
 
     return (
-      <div className="Input">
+      <div className={classes('Input', {
+        ['Input--empty']: !value,
+        ['Input--focused']: focused,
+      })}>
         <label
           className="Input__Label"
           for={ name }>{ label }</label>
         <input
           ref="input"
-          className={classes('Input__Field', {
-            ['Input__Field--empty']: !value,
-            ['Input__Field--focused']: focused,
-          })}
+          className="Input__Field"
           name= { name }
           type={ type }
           placeholder={ label } />

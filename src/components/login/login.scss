@@ -1,11 +1,69 @@
 .Login {
   .Login__Message {
+    margin-bottom: 1rem;
     font-size: 36px;
     font-weight: light;
   }
 
-  .Login__Input {
-    
+  .Input {
+    position: relative;
+    margin: 0.5rem;
+    font-size: 24px;
+
+    .Input__Label {
+      transition-property: left, top, font-size, color;
+      transition-duration: 0.5s;
+
+      cursor: text;
+
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+
+      display: block;
+
+      font-weight: bold;
+    }
+
+    &.Input--focused,
+    &:not(.Input--empty) {
+      .Input__Label {
+        left: 0;
+        top: 0;
+        color: lighten(#341212, 40);
+        font-size: 1rem;
+      }
+    }
+
+    .Input__Field {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0.5rem 0 0;
+      padding: 1.5rem 0 0.5rem;
+
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 200;
+
+      color: lighten(#341212, 40);
+      background-color: transparent;
+
+      border: 0px solid lighten(#341212, 40);
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &.Input--focused .Input__Field {
+      padding-bottom: calc(0.5rem - 2px);
+      border-bottom-width: 2px;
+    }
   }
 
   .Login__Buttons {
