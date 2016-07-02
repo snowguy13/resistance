@@ -12,7 +12,7 @@ class OpeningContainer extends Component {
       this.props.setContainer( LOGIN );
     }, 15000);
 
-    return (<Splash />);
+    return (<Splash onComplete={ () => this.props.setContainer( LOGIN ) } />);
   }
 }
 

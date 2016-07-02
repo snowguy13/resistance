@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import classes from '../../utility/css-classes';
+import { NOOP } from '../../utility/function';
 
 const DEFAULT_TYPE = 'text';
-const NOOP = () => {};
 
 class Input extends Component {
   static displayName = 'Input'
