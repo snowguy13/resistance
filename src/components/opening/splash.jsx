@@ -1,5 +1,6 @@
 import './splash.scss';
 import React, { Component, PropTypes } from 'react';
+import { NOOP } from '../../utility/function';
 
 class Splash extends Component {
   static displayName = 'Splash'
