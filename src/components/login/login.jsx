@@ -1,6 +1,7 @@
 import './login.scss';
 import React, { Component, PropTypes } from 'react';
 import Input from '../ui/input';
+import Button from '../ui/button';
 
 class Login extends Component {
   static displayName = 'Login'
@@ -19,12 +20,25 @@ class Login extends Component {
           name="Login__AuthCode"
           label="Auth Code" />
         <div className="Login__Buttons">
+          <Button name="Login__Authenticate">
+            Authenticate
+          </Button>
+        </div>
+        <div className="Login__Buttons">
+          <Button name="Login__NewAgent">
+            New Agent
+          </Button>
+          <Button name="Login__TempAgent">
+            Temp Agent
+          </Button>
+        </div>
+        {/* <div className="Login__Buttons">
           <button className="Login__Button">Authenticate</button>
         </div>
         <div className="Login__Buttons">
           <button className="Login__Button">Register</button>
           <button className="Login__Button">Temp Agent</button>
-        </div>
+        </div> */}
       </div>
     );
   }

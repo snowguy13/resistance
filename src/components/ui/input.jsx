@@ -5,13 +5,40 @@ import { NOOP } from '../../utility/function';
 
 const DEFAULT_TYPE = 'text';
 
+/**
+ * A simple component for creating input elements. Supports
+ * focus, blur, and input events. Input focusing has a special
+ * CSS class (see below), but other psuedo-classes work as usual.
+ *
+ * CSS Classes:
+ *  (Block)    .Input
+ *    The container element. The <label> and <input> document
+ *    elements sit inside here.
+ *  (Modifier) --Focused
+ *    Applied when the <input> element has focus in the DOM.
+ *  (Modifier) --Empty
+ *    Applied when the <input> element is empty (value is "").
+ *  (Element)  __Label
+ *    The label
+ *  (Element)  __Field
+ *    The <input> element sitting inside the container.
+ */
 class Input extends Component {
   static displayName = 'Input'
 
   static propTypes = {
+    // Used as the [name] attribute for the child <input> element,
+    // and as the [for] attribute on the child <label> element
     name:  PropTypes.string.isRequired,
+
+    // Used as the text within the <label> element and as the
+    // <input> element's [placeholder] attribute
     label: PropTypes.string.isRequired,
+
+    // Used as the <input> element's [type] attribute
     type:  PropTypes.string,
+
+    // Typical event bindings, applied to the child <input> element
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onInput: PropTypes.func,
@@ -49,8 +76,14 @@ class Input extends Component {
 
     // Remove bound event listeners
     for( let eventType in handlers ) {
-      input.removeEventListener( eventType, handlers[ eventType ] );
+      input.removeEventListener( eventType.toLowerCase(), handlers[ eventType ] );
     }
+  }
+
+  handlers = {
+    focus: ::this._onFocus,
+    blur: ::this._onBlur,
+    input: ::this._onInput,
   }
 
   _onFocus() {
@@ -77,16 +110,6 @@ class Input extends Component {
 
     // Invoke the given handler
     this.props.onInput( newValue );
-  }
-
-  handlers = {
-    focus: this._onFocus.bind(this),
-    blur: this._onBlur.bind(this),
-    input: this._onInput.bind(this),
-  }
-
-  onLabelClick() {
-    findDOMNode(this.refs.input).focus();
   }
 
   render() {

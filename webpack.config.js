@@ -19,7 +19,8 @@ module.exports = {
             'transform-react-display-name',
             'transform-class-properties',
             'transform-es2015-destructuring',
-            'transform-object-rest-spread'
+            'transform-object-rest-spread',
+            'transform-function-bind'
           ]
         }
       },
