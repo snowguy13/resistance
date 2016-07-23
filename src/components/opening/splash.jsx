@@ -14,9 +14,7 @@ class Splash extends Component {
   }
 
   render() {
-    setTimeout(() => {
-      this.props.onComplete();
-    }, 15000);
+    setTimeout(this.props.onComplete, 15000);
 
     return (<h1 className="Splash">The Resistance</h1>);
   }

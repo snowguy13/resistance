@@ -8,10 +8,6 @@ class OpeningContainer extends Component {
   static displayName = 'OpeningContainer'
 
   render() {
-    setTimeout(() => {
-      this.props.setContainer( LOGIN );
-    }, 15000);
-
     return (<Splash onComplete={ () => this.props.setContainer( LOGIN ) } />);
   }
 }

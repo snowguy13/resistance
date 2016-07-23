@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import ReactOutsideEvent from 'react-outside-event';
 import { NOOP } from '../../utility/function';
 import classes from '../../utility/css-classes';
@@ -55,39 +56,12 @@ class Button extends Component {
     };
   }
 
-  componentDidMount() {
-    const button = findDOMNode( this.refs.button );
-    const handlers = this.handlers;
-
-    // Bind event handlers to the input element
-    for( let eventType in handlers ) {
-      input.addEventListener( eventType, handlers[ eventType ] );
-    }
-  }
-
-  componentWillUnmount() {
-    const button = findDOMNode( this.refs.button );
-    const handlers = this.handlers;
-
-    // Remove bound event listeners
-    for( let eventType in handlers ) {
-      input.removeEventListener( eventType, handlers[ eventType ] );
-    }
-  }
-
-  handlers = {
-    mousedown: this._mouseDown,
-    mouseup: this._mouseUp,
-    keydown: this._keyDown,
-    keyup: this._keyUp,
-  }
-
-  _onMouseDown = () => {
+  onMouseDown = () => {
     // Update state
     this.setState({ mouseDown: true });
   }
 
-  _onMouseUp = () => {
+  onMouseUp = () => {
     const { onPressed } = this.props;
     const { enterPressed } = this.state;
 
@@ -101,7 +75,7 @@ class Button extends Component {
     }
   }
 
-  _onKeyDown = ( ev ) => {
+  onKeyDown = ( ev ) => {
     const key = ev.keyCode || ev.which;
 
     switch( key ) {
@@ -115,7 +89,7 @@ class Button extends Component {
     }
   }
 
-  _onKeyUp = ( ev ) => {
+  onKeyUp = ( ev ) => {
     const key = ev.keyCode || ev.which;
     const { enterPress, onPressed } = this.props;
     const { mouseDown } = this.state;
@@ -150,19 +124,27 @@ class Button extends Component {
   }
 
   render() {
-    const { name, disabled, children } = this.props;
-    const { mouseDown, enterPressed } = this.state;
+    const {
+      props: { name, disabled, children },
+      state: { mouseDown, enterPressed },
+      onMouseDown, onMouseUp,
+      onKeyDown, onKeyUp,
+    } = this;
 
-    <button
+    return (<button
       ref="button"
       type="button"
       name={ name }
       disabled={ disabled }
       className={classes('Button', {
         ['Button--pressed']: mouseDown || enterPressed
-      })}>
+      })}
+      onMouseDown={ onMouseDown }
+      onMouseUp={ onMouseUp }
+      onKeyDown={ onKeyDown }
+      onKeyUp={ onKeyUp }>
       { children }
-    </button>
+    </button>);
   }
 };
 

@@ -8,7 +8,7 @@ import { Classes } from './container-types';
 
 class Resistance extends Component {
   static displayName = 'Resistance'
-  
+
   static propTypes = {
     messages: PropTypes.array
   }
@@ -23,8 +23,6 @@ class Resistance extends Component {
     );
   }
 };
-
-
 
 const mapStateToProps = (state) => {
   return {
