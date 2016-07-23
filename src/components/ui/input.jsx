@@ -60,33 +60,7 @@ class Input extends Component {
     }
   }
 
-  componentDidMount() {
-    const input = findDOMNode( this.refs.input );
-    const handlers = this.handlers;
-
-    // Bind event handlers to the input element
-    for( let eventType in handlers ) {
-      input.addEventListener( eventType, handlers[ eventType ] );
-    }
-  }
-
-  componentWillUnmount() {
-    const input = findDOMNode( this.refs.input );
-    const handlers = this.handlers;
-
-    // Remove bound event listeners
-    for( let eventType in handlers ) {
-      input.removeEventListener( eventType.toLowerCase(), handlers[ eventType ] );
-    }
-  }
-
-  handlers = {
-    focus: ::this._onFocus,
-    blur: ::this._onBlur,
-    input: ::this._onInput,
-  }
-
-  _onFocus() {
+  onFocus = () => {
     // Update state
     this.setState({ focused: true });
 
@@ -94,7 +68,7 @@ class Input extends Component {
     this.props.onFocus();
   }
 
-  _onBlur() {
+  onBlur = () => {
     // Update state
     this.setState({ focused: false });
 
@@ -102,7 +76,7 @@ class Input extends Component {
     this.props.onBlur();
   }
 
-  _onInput() {
+  onInput = () => {
     const newValue = findDOMNode( this.refs.input ).value;
 
     // Update state
@@ -113,8 +87,11 @@ class Input extends Component {
   }
 
   render() {
-    const { name, label, type } = this.props;
-    const { focused, value } = this.state;
+    const {
+      props: { name, label, type },
+      state: { focused, value },
+      onFocus, onBlur, onInput,
+    } = this;
 
     return (
       <div className={classes('Input', {
@@ -125,11 +102,13 @@ class Input extends Component {
           className="Input__Label"
           for={ name }>{ label }</label>
         <input
-          ref="input"
           className="Input__Field"
           name= { name }
           type={ type }
-          placeholder={ label } />
+          placeholder={ label }
+          onFocus={ onFocus }
+          onBlur={ onBlur }
+          onInput={ onInput } />
       </div>
     );
   }

@@ -22,7 +22,7 @@ import classes from '../../utility/css-classes';
  *    is focused.
  */
 class Button extends Component {
-  static displayName = 'Button';
+  static displayName = 'Button'
 
   static propTypes = {
     // Used as the [name] attribute on the underlying <button>
@@ -39,7 +39,7 @@ class Button extends Component {
     // is set to 'true', when [Enter] is pressed while the
     // button is focused
     onPressed: PropTypes.func,
-  };
+  }
 
   static defaultProps = {
     disabled: false,
