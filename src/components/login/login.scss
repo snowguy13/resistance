@@ -1,3 +1,5 @@
+@import 'colors';
+
 .Login {
   .Login__Message {
     margin-bottom: 1rem;
@@ -30,7 +32,7 @@
       .Input__Label {
         left: 0;
         top: 0;
-        color: lighten(#341212, 40);
+        color: $ui-color-agent-lightest;
         font-size: 1rem;
       }
     }
@@ -46,10 +48,10 @@
       font-size: inherit;
       font-weight: 200;
 
-      color: lighten(#341212, 40);
+      color: $ui-color-agent-lightest;
       background-color: transparent;
 
-      border: 0px solid lighten(#341212, 40);
+      border: 0px solid $ui-color-agent-lightest;
 
       &::placeholder {
         color: transparent;
@@ -80,8 +82,8 @@
     font-size: 24px;
     font-weight: 200;
 
-    color: white;
-    background-color: darken(#341212, 0.5);
+    color: $ui-color-agent-lighter;
+    background-color: $ui-color-agent-darker;
 
     border: none;
     border-radius: 3px;

@@ -20,6 +20,7 @@
 
 .Splash {
   animation: blur 15s linear;
+  animation-fill-mode: forwards;
   padding: 50px;
   margin: -50px;
   font-size: 84px;

@@ -1,15 +1,15 @@
 $ui-color-agent: #cc3636;
-$ui-color-agent-light: lighten($ui-color-agent, 30%);
-$ui-color-agent-lighter: lighten($ui-color-agent, 50%);
-$ui-color-agent-lightest: lighten($ui-color-agent, 70%);
-$ui-color-agent-dark: darken($ui-color-agent, 30%);
-$ui-color-agent-darker: darken($ui-color-agent, 50%);
-$ui-color-agent-darkest: darken($ui-color-agent, 70%);
+$ui-color-agent-light: lighten($ui-color-agent, 10%);
+$ui-color-agent-lighter: lighten($ui-color-agent, 25%);
+$ui-color-agent-lightest: lighten($ui-color-agent, 40%);
+$ui-color-agent-dark: darken($ui-color-agent, 10%);
+$ui-color-agent-darker: darken($ui-color-agent, 25%);
+$ui-color-agent-darkest: darken($ui-color-agent, 40%);
 
 $ui-color-resistance: #2ebdff;
-$ui-color-resistance-light: lighten($ui-color-resistance, 30%);
-$ui-color-resistance-lighter: lighten($ui-color-resistance, 50%);
-$ui-color-resistance-lightest: lighten($ui-color-resistance, 70%);
-$ui-color-resistance-dark: darken($ui-color-resistance, 30%);
-$ui-color-resistance-darker: darken($ui-color-resistance, 50%);
-$ui-color-resistance-darkest: darken($ui-color-resistance, 70%);
+$ui-color-resistance-light: lighten($ui-color-resistance, 10%);
+$ui-color-resistance-lighter: lighten($ui-color-resistance, 25%);
+$ui-color-resistance-lightest: lighten($ui-color-resistance, 40%);
+$ui-color-resistance-dark: darken($ui-color-resistance, 10%);
+$ui-color-resistance-darker: darken($ui-color-resistance, 25%);
+$ui-color-resistance-darkest: darken($ui-color-resistance, 40%);

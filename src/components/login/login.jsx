@@ -32,13 +32,6 @@ class Login extends Component {
             Temp Agent
           </Button>
         </div>
-        {/* <div className="Login__Buttons">
-          <button className="Login__Button">Authenticate</button>
-        </div>
-        <div className="Login__Buttons">
-          <button className="Login__Button">Register</button>
-          <button className="Login__Button">Temp Agent</button>
-        </div> */}
       </div>
     );
   }
