@@ -1,0 +1,26 @@
+.Button {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+
+  .Arrow {
+    display: inline-block;
+    height: 100%;
+    flex: 10px 0 0;
+  }
+
+  .Button__Contents {
+    flex: auto 1 1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}

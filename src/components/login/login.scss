@@ -75,17 +75,46 @@
   }
 
   .Button {
-    flex: 1 0 auto;
     margin: 5px;
-    padding: 10px;
+    height: 55px;
 
-    font-size: 24px;
-    font-weight: 200;
+    transition-property: transform;
+    transition-duration: 0.1s;
 
-    color: $ui-color-agent-lighter;
-    background-color: $ui-color-agent-darker;
+    .Button__Contents {
+      transition-property: background-color;
+      transition-duration: 0.1s;
 
-    border: none;
-    border-radius: 3px;
+      flex: 1 0 auto;
+      padding: 10px;
+
+      font-size: 24px;
+      font-weight: 200;
+
+      color: $ui-color-agent-lighter;
+      background-color: $ui-color-agent-darker;
+
+      border: none;
+    }
+
+    .Arrow__Body {
+      transition-property: fill;
+      transition-duration: 0.1s;
+      fill: $ui-color-agent-darker;
+    }
+
+    &:hover, &:focus {
+      transform: scale(1.1);
+
+      z-index: 1;
+
+      .Button__Contents {
+        background-color: $ui-color-agent-darkest;
+      }
+
+      .Arrow__Body {
+        fill: $ui-color-agent-darkest;
+      }
+    }
   }
 }

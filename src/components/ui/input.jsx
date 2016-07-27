@@ -102,6 +102,7 @@ class Input extends Component {
           className="Input__Label"
           for={ name }>{ label }</label>
         <input
+          ref="input"
           className="Input__Field"
           name= { name }
           type={ type }

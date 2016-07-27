@@ -1,8 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import ReactOutsideEvent from 'react-outside-event';
+
+import Arrow, { Directions } from './arrow';
+
 import { NOOP } from '../../utility/function';
 import classes from '../../utility/css-classes';
+
+import './button.scss';
 
 /**
  * A simple component for creating buttons. Only supports
@@ -20,6 +25,8 @@ import classes from '../../utility/css-classes';
  *    Set when the user's mouse is pressed down over the <button>
  *    or when the [Enter] key is pressed down while the <button>
  *    is focused.
+ *  (Element)  __Content
+ *    The wrapper <div> for the children passed to the button.
  */
 class Button extends Component {
   static displayName = 'Button'
@@ -143,7 +150,11 @@ class Button extends Component {
       onMouseUp={ onMouseUp }
       onKeyDown={ onKeyDown }
       onKeyUp={ onKeyUp }>
-      { children }
+      <Arrow direction={Directions.LEFT} />
+      <div className="Button__Contents">
+        { children }
+      </div>
+      <Arrow direction={Directions.RIGHT} />
     </button>);
   }
 };

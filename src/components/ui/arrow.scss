@@ -1,0 +1,10 @@
+.Arrow {
+  height: 100%;
+  fill: none;
+  stroke: none;
+  stroke-linecap: round;
+
+  .Arrow__Chevron {
+    stroke-width: 2px;
+  }
+}

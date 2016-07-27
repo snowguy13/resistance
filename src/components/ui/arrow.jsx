@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { map } from '../../utility/object';
 
+import './arrow.scss';
+
 // Directional constants
 const UP = 0;
 const DOWN = 1;
@@ -48,13 +50,12 @@ class Arrow extends Component {
 
   static propTypes = {
     // The direction the arrow should point
-    direction: PropsTypes.oneOf([ UP, DOWN, RIGHT, LEFT ]),
+    direction: PropTypes.oneOf([ UP, DOWN, RIGHT, LEFT ]),
   }
 
-  static Directions = { UP, DOWN, LEFT, RIGHT };
-
   render() {
-    const { p, c1, c2 } = COORDS[ this.props.direction ];
+    const dir = this.props.direction;
+    const { p, c1, c2 } = COORDS[ dir ];
     const isVertical = dir === UP || dir === DOWN;
 
     // If the arrow points up or down, create a 2x1 grid
@@ -64,11 +65,12 @@ class Arrow extends Component {
     // Now, with coordinates in hand, we can construct the SVG
     return (
       <svg className="Arrow"
-           viewBox={viewBox}>
-        <path className="Arrow__Chevron"
-              d={`M ${c1} L ${p} L ${c2} z`}/>
-        <path className="Arrow__Back"
-              d={`M ${c1} L ${c2} z`} />
+           viewBox={viewBox}
+           preserveAspectRatio="none">
+        <polyline className="Arrow__Chevron"
+                  points={`${c1} ${p} ${c2}`} />
+        <polyline className="Arrow__Back"
+                  points={`${c1} ${c2}`} />
         <path className="Arrow__Body"
               d={`M ${c1} L ${p} L ${c2} L ${c1} z`} />
       </svg>
@@ -76,4 +78,5 @@ class Arrow extends Component {
   }
 }
 
+export const Directions = { UP, DOWN, LEFT, RIGHT };
 export default Arrow;
