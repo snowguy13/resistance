@@ -23,8 +23,12 @@
 .Splash {
   animation: blur 15s linear;
   animation-fill-mode: forwards;
+
+  // Make sure the blur isn't cut off at the edges
+  // overflow: visible didn't seem to fix this
   padding: 50px;
   margin: -50px;
+
   font-size: 8rem;
-  text-shadow: 0 0 6px white
+  text-shadow: 0 0 6px currentColor;
 }

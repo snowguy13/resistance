@@ -2,14 +2,15 @@
 
 .Login {
   .Login__Message {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5em;
     font-size: 3rem;
-    font-weight: light;
+    font-weight: 200;
+    text-align: center;
   }
 
   .Input {
     position: relative;
-    margin: 0.5rem;
+    margin: 0.5em;
     font-size: 2rem;
 
     .Input__Label {
@@ -19,8 +20,8 @@
       cursor: text;
 
       position: absolute;
-      left: 1rem;
-      top: 1rem;
+      left: 0.5em;
+      top: 0.5em;
 
       display: block;
 
@@ -31,7 +32,7 @@
     &:not(.Input--empty) {
       .Input__Label {
         left: 0;
-        top: 0;
+        top: -1em;
         color: $ui-color-agent-lightest;
         font-size: 1rem;
       }
@@ -41,8 +42,8 @@
       display: block;
       box-sizing: border-box;
       width: 100%;
-      margin: 0.5rem 0 0;
-      padding: 1.5rem 0 0.5rem;
+      margin: 0.5em 0 0;
+      padding: 0.5em 0 0.5em;
 
       font-family: inherit;
       font-size: inherit;
@@ -51,7 +52,7 @@
       color: $ui-color-agent-lightest;
       background-color: transparent;
 
-      border: 0px solid $ui-color-agent-lightest;
+      border: 0 solid $ui-color-agent-lightest;
 
       &::placeholder {
         color: transparent;
@@ -63,7 +64,7 @@
     }
 
     &.Input--focused .Input__Field {
-      padding-bottom: calc(0.5rem - 2px);
+      padding-bottom: calc(0.5em - 2px);
       border-bottom-width: 2px;
     }
   }
@@ -75,8 +76,11 @@
   }
 
   .Button {
-    margin: 5px;
-    height: 55px;
+    margin: 0.5em 1em;
+    height: 2.5em;
+
+    font-size: 2rem;
+    font-weight: 200;
 
     transition-property: transform;
     transition-duration: 0.1s;
@@ -86,15 +90,23 @@
       transition-duration: 0.1s;
 
       flex: 1 0 auto;
-      padding: 10px;
-
-      font-size: 2rem;
-      font-weight: 200;
+      padding: 0 0.5em;
 
       color: $ui-color-agent-lighter;
       background-color: $ui-color-agent-darker;
 
       border: none;
+    }
+
+    // SVG stroke gets cut off if we don't add this padding
+    // overflow: visible makes the SVG's sizing wonky for some
+    // reason, so opted to use this solution instead
+    .Arrow:first-child {
+      padding-left: 1px;
+    }
+
+    .Arrow:last-child {
+      padding-right: 1px;
     }
 
     .Arrow__Body {
@@ -104,9 +116,9 @@
     }
 
     &:hover, &:focus {
-      transform: scale(1.1);
-
       z-index: 1;
+
+      outline: none;
 
       .Button__Contents {
         background-color: $ui-color-agent-darkest;
@@ -115,6 +127,28 @@
       .Arrow__Body {
         fill: $ui-color-agent-darkest;
       }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:focus {
+      .Button__Contents {
+        margin: -1px 0;
+
+        border: solid $ui-color-resistance;
+        border-width: 2px 0;
+      }
+
+      .Arrow__Chevron {
+        stroke: $ui-color-resistance;
+        stroke-width: 2px;
+      }
+    }
+
+    &.Button--pressed, &.Button--pressed:hover {
+      transform: scale(1.05);
     }
   }
 }

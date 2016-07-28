@@ -68,9 +68,11 @@ class Arrow extends Component {
            viewBox={viewBox}
            preserveAspectRatio="none">
         <polyline className="Arrow__Chevron"
-                  points={`${c1} ${p} ${c2}`} />
+                  points={`${c1} ${p} ${c2}`}
+                  vectorEffect="non-scaling-stroke" />
         <polyline className="Arrow__Back"
-                  points={`${c1} ${c2}`} />
+                  points={`${c1} ${c2}`}
+                  vectorEffect="non-scaling-stroke" />
         <path className="Arrow__Body"
               d={`M ${c1} L ${p} L ${c2} L ${c1} z`} />
       </svg>
