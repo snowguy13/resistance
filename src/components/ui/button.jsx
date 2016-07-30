@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import ReactOutsideEvent from 'react-outside-event';
 
+import Hex from './hex';
 import Arrow, { Directions } from './arrow';
 
 import { NOOP } from '../../utility/function';
