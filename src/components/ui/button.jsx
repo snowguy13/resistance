@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import ReactOutsideEvent from 'react-outside-event';
 
-import Hex from './hex';
+import { renderHex } from './hex';
 import Arrow, { Directions } from './arrow';
 
 import { NOOP } from '../../utility/function';
@@ -139,6 +139,12 @@ class Button extends Component {
       onKeyDown, onKeyUp,
     } = this;
 
+    const buttonChildren = renderHex(
+      <div className="Button__Contents">
+        { children }
+      </div>
+    );
+
     return (<button
       ref="button"
       type="button"
@@ -151,11 +157,7 @@ class Button extends Component {
       onMouseUp={ onMouseUp }
       onKeyDown={ onKeyDown }
       onKeyUp={ onKeyUp }>
-      <Arrow direction={Directions.LEFT} />
-      <div className="Button__Contents">
-        { children }
-      </div>
-      <Arrow direction={Directions.RIGHT} />
+      { buttonChildren }
     </button>);
   }
 };
