@@ -23,4 +23,167 @@
   font-size: 1rem;
   color: $ui-color-agent-lightest;
   background-color: $ui-color-agent-dark;
+
+  .Input {
+    position: relative;
+    margin: 0.5em;
+    font-size: 2rem;
+
+    .Input__Label {
+      transition-property: left, top, font-size, color;
+      transition-duration: 0.5s;
+
+      cursor: text;
+
+      position: absolute;
+      left: 0.5em;
+      top: 0.5em;
+
+      display: block;
+
+      font-weight: bold;
+    }
+
+    &.Input--focused,
+    &:not(.Input--empty) {
+      .Input__Label {
+        left: 0;
+        top: -1em;
+        color: $ui-color-agent-lightest;
+        font-size: 1rem;
+      }
+    }
+
+    .Input__Field {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0.5em 0 0;
+      padding: 0.5em 0 0.5em;
+
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 200;
+
+      color: $ui-color-agent-lightest;
+      background-color: transparent;
+
+      border: 0 solid $ui-color-agent-lightest;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &.Input--focused .Input__Field {
+      padding-bottom: calc(0.5em - 2px);
+      border-bottom-width: 2px;
+    }
+  }
+
+  .Button {
+    margin: 0.5em 1em;
+    height: 2.5em;
+
+    font-size: 2rem;
+    font-weight: 200;
+
+    transition-property: transform;
+    transition-duration: 0.1s;
+
+    .Button__Contents {
+      transition-property: background-color;
+      transition-duration: 0.1s;
+
+      flex: 1 0 auto;
+      padding: 0 0.5em;
+
+      color: $ui-color-agent-lighter;
+      background-color: $ui-color-agent-darker;
+
+      border: none;
+    }
+
+    // SVG stroke gets cut off if we don't add this padding
+    // overflow: visible makes the SVG's sizing wonky for some
+    // reason, so opted to use this solution instead
+    .Arrow:first-child {
+      padding-left: 1px;
+    }
+
+    .Arrow:last-child {
+      padding-right: 1px;
+    }
+
+    .Arrow__Body {
+      transition-property: fill;
+      transition-duration: 0.1s;
+      fill: $ui-color-agent-darker;
+    }
+
+    &:hover, &:focus {
+      z-index: 1;
+
+      outline: none;
+
+      .Button__Contents {
+        background-color: $ui-color-agent-darkest;
+      }
+
+      .Arrow__Body {
+        fill: $ui-color-agent-darkest;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:focus {
+      .Button__Contents {
+        margin: -1px 0;
+
+        border: solid $ui-color-resistance;
+        border-width: 2px 0;
+      }
+
+      .Arrow__Chevron {
+        stroke: $ui-color-resistance;
+        stroke-width: 2px;
+      }
+    }
+
+    &.Button--pressed, &.Button--pressed:hover {
+      transform: scale(1.05);
+    }
+
+    &[disabled] {
+      cursor: default;
+
+      .Button__Contents {
+        color: $ui-color-neutral-darker;
+        background-color: $ui-color-neutral-lighter;
+      }
+
+      .Arrow__Body {
+        fill: $ui-color-neutral-lighter;
+      }
+
+      &:hover {
+        transform: none;
+
+        .Button__Contents {
+          background-color: $ui-color-neutral-lighter;
+        }
+
+        .Arrow__Body {
+          fill: $ui-color-neutral-lighter;
+        }
+      }
+    }
+  }
 }

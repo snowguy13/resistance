@@ -13,3 +13,11 @@ $ui-color-resistance-lightest: lighten($ui-color-resistance, 40%);
 $ui-color-resistance-dark: darken($ui-color-resistance, 10%);
 $ui-color-resistance-darker: darken($ui-color-resistance, 25%);
 $ui-color-resistance-darkest: darken($ui-color-resistance, 40%);
+
+$ui-color-neutral: #888;
+$ui-color-neutral-light: lighten($ui-color-neutral, 10%);
+$ui-color-neutral-lighter: lighten($ui-color-neutral, 25%);
+$ui-color-neutral-lightest: lighten($ui-color-neutral, 40%);
+$ui-color-neutral-dark: darken($ui-color-neutral, 10%);
+$ui-color-neutral-darker: darken($ui-color-neutral, 25%);
+$ui-color-neutral-darkest: darken($ui-color-neutral, 40%);

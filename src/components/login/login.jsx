@@ -6,7 +6,21 @@ import Button from '../ui/button';
 class Login extends Component {
   static displayName = 'Login'
 
+  state = {
+    name: '',
+    pass: ''
+  }
+
+  onInput = ( whichInput ) => ( newValue ) => {
+    this.setState({
+      [whichInput]: newValue,
+    });
+  }
+
   render() {
+    const { name, pass } = this.state;
+    const authDisabled = !name || !pass;
+
     return (
       <div className="Login">
         <div className="Login__Message">
@@ -14,22 +28,19 @@ class Login extends Component {
         </div>
         <Input
           name="Login__AgentID"
-          label="Agent ID" />
+          label="Agent ID"
+          onInput={ this.onInput('name') } />
         <Input
           type="password"
           name="Login__AuthCode"
-          label="Auth Code" />
+          label="Auth Code"
+          onInput={ this.onInput('pass') } />
         <div className="Login__Buttons">
-          <Button name="Login__Authenticate">
+          <Button name="Login__Authenticate" disabled={ authDisabled }>
             Authenticate
           </Button>
-        </div>
-        <div className="Login__Buttons">
           <Button name="Login__NewAgent">
             New Agent
-          </Button>
-          <Button name="Login__TempAgent">
-            Temp Agent
           </Button>
         </div>
       </div>
