@@ -18,8 +18,9 @@ if( !window.WebSocket ) {
     reducers,
     {},
     compose(
-      window.devToolsExtension ? window.devToolsExtension() : () => (),
+      window.devToolsExtension ? window.devToolsExtension() : () => {},
       applyMiddleware( reduxThunk )
+    )
   );
 
   render(

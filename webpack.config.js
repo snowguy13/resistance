@@ -31,7 +31,7 @@ module.exports = {
     ]
   },
   sassLoader: {
-    includePaths: [path.resolve(__dirname, './src/style')],
+    includePaths: [path.resolve(__dirname, './client/style')],
   },
   plugins: [
     new Webpack.optimize.UglifyJsPlugin({
