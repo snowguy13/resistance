@@ -1,5 +1,5 @@
-import Opening from './opening/opening';
-import Login from './login/login';
+import Opening from '../components/opening/opening';
+import Login from '../components/login/login';
 
 export const OPENING = 0;
 export const LOGIN = 1;

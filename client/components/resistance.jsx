@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import LinkWebSocket from './util/link-web-socket';
 import { open, message, error, close } from '../actions/sockets';
 import { map } from '../utility/object';
-import { Classes } from './container-types';
+import { Classes } from '../constants/container-types';
 
 class Resistance extends Component {
   static displayName = 'Resistance'

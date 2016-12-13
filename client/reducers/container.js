@@ -1,5 +1,5 @@
 import AllActions from '../actions/all';
-import * as ContainerTypes from '../components/container-types';
+import * as ContainerTypes from '../constants/container-types';
 
 export default function(state = undefined, action) {
   let nextState = state || ContainerTypes.LOGIN;

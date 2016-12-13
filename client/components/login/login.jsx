@@ -5,7 +5,7 @@ import Input from '../ui/input';
 import Button from '../ui/button';
 
 import { setContainer } from '../../actions/all';
-import { LOGIN } from '../container-types';
+import { LOGIN } from '../../constants/container-types';
 
 class Login extends Component {
   static displayName = 'Login'
