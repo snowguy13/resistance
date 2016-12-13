@@ -36,6 +36,7 @@
     "react-outside-event": "^1.2.4",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
     "ws": "^1.1.0"
   },
   "devDependencies": {

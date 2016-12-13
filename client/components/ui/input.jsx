@@ -42,6 +42,9 @@ class Input extends Component {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onInput: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
+    onKeyPress: PropTypes.func,
   }
 
   static defaultProps = {
@@ -49,6 +52,9 @@ class Input extends Component {
     onInput: NOOP,
     onFocus: NOOP,
     onBlur: NOOP,
+    onKeyDown: NOOP,
+    onKeyUp: NOOP,
+    onKeyPress: NOOP,
   }
 
   constructor( props ) {
@@ -76,8 +82,8 @@ class Input extends Component {
     this.props.onBlur();
   }
 
-  onInput = () => {
-    const newValue = findDOMNode( this.refs.input ).value;
+  onInput = ( ev ) => {
+    const newValue = ev.target.value;
 
     // Update state
     this.setState({ value: newValue });
@@ -86,11 +92,18 @@ class Input extends Component {
     this.props.onInput( newValue );
   }
 
+  onKeyEvent = ( type ) => ( ev ) => {
+    const key = ev.keyCode || ev.which;
+
+    // Invoke the handler with the event's key code.
+    this.props[ type ]( key );
+  }
+
   render() {
     const {
       props: { name, label, type },
       state: { focused, value },
-      onFocus, onBlur, onInput,
+      onFocus, onBlur, onInput, onKeyEvent
     } = this;
 
     return (
@@ -109,7 +122,10 @@ class Input extends Component {
           placeholder={ label }
           onFocus={ onFocus }
           onBlur={ onBlur }
-          onInput={ onInput } />
+          onInput={ onInput }
+          onKeyDown={ onKeyEvent('onKeyDown') }
+          onKeyUp={ onKeyEvent('onKeyUp') }
+          onKeyPress={ onKeyEvent('onKeyPress') }/>
       </div>
     );
   }

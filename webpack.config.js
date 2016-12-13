@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/app.jsx',
+  entry: './client/app.jsx',
   output: {
     path: './public',
     filename: 'app.bundle.js',
