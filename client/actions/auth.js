@@ -1,33 +1,30 @@
 export const LOG_IN_START = 'AUTH_LOG_IN_START';
-export const logInStart = ({ username, password }) => ({
+export const logInStart = ({ username }) => ({
   type: LOG_IN_START,
   username,
-  password
 });
 
 export const LOG_IN_FAILURE = 'AUTH_LOG_IN_FAILURE';
-export const logInFailure = ({ username, password }) => ({
+export const logInFailure = ({ username }) => ({
   type: LOG_IN_FAILURE,
   username,
-  password
 });
 
 export const LOG_IN_SUCCESS = 'AUTH_LOG_IN_SUCCESS';
-export const logInSuccess = ({ username, password }) => ({
+export const logInSuccess = ({ username }) => ({
   type: LOG_IN_SUCCESS,
   username,
-  password
 });
 
 export const logInAsync = ({ username, password }) => {
   return dispatch => {
     // Signal a login has started.
-    dispatch( logInStart({ username, password }) );
+    dispatch( logInStart({ username }) );
 
     // For now, fake a login. Succeeds 90% of the time.
     setTimeout(
-      () => dispatch( ( Math.random() > .9 ? logInFailure : logInSuccess )({ username, password }) ),
-      1000
+      () => dispatch( ( Math.random() > .9 ? logInFailure : logInSuccess )({ username }) ),
+      1000 + Math.random() * 2000
     )
   };
 };

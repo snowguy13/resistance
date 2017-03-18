@@ -14,6 +14,8 @@ const renderHex = (elements, Wrap = false) => {
 
 const Hex = (Component, inside = false) => {
   class HexComponent extends Component {
+    static displayName = `Hex(${Component.displayName})`
+
     render() {
       const props = this.props;
 
@@ -24,8 +26,6 @@ const Hex = (Component, inside = false) => {
         renderHex(<Component {...props} />);
     }
   }
-
-  HexComponent.displayName = `Hex(${Component.displayName})`;
 
   return HexComponent;
 };

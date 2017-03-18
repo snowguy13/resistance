@@ -24,19 +24,15 @@ class Resistance extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    Container: Classes[ state.container ]
-  };
-};
+const mapStateToProps = state => ({
+  Container: Classes[ state.container ]
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    socketBindings: map(
-      { open, message, error, close },
-      (action) => (ev) => dispatch(action(ev))
-    )
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  socketBindings: map(
+    { open, message, error, close },
+    (action) => (ev) => dispatch(action(ev))
+  )
+});
 
 export default connect( mapStateToProps, mapDispatchToProps )( LinkWebSocket(Resistance) );

@@ -13,13 +13,18 @@ import { LOGIN } from '../../constants/container-types';
 class Login extends Component {
   static displayName = 'Login'
 
+  static propTypes = {
+    pendingAttempt: PropTypes.bool,
+    logIn: PropTypes.func,
+  }
+
   state = {
     name: '',
     pass: ''
   }
 
   canLogIn = () => {
-    return !!this.state.name && !!this.state.pass;
+    return !this.props.pendingAttempt && !!this.state.name && !!this.state.pass;
   }
 
   logIn = () => {
@@ -50,7 +55,10 @@ class Login extends Component {
 
   render() {
     const authDisabled = !this.canLogIn();
-    const { logIn } = this;
+    const {
+      logIn,
+      props: { pendingAttempt }
+    } = this;
 
     return (
       <div className="Login">
@@ -73,9 +81,11 @@ class Login extends Component {
             name="Login__Authenticate"
             disabled={ authDisabled }
             onPressed={ logIn }>
-            Authenticate
+            { pendingAttempt ? "Logging in..." : "Authenticate" }
           </Button>
-          <Button name="Login__NewAgent">
+          <Button
+            name="Login__NewAgent"
+            disabled={ pendingAttempt }>
             New Agent
           </Button>
         </div>
@@ -84,15 +94,17 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logIn: ({ name, pass }) => {
-      dispatch( logInAsync({
-        username: name,
-        password: pass
-      }));
-    }
-  }
-}
+const mapStateToProps = state => ({
+  pendingAttempt: !!state.auth.lastAttempt && !state.auth.lastAttempt.finished,
+});
 
-export default connect( undefined, mapDispatchToProps )( Login );
+const mapDispatchToProps = dispatch => ({
+  logIn: ({ name, pass }) => {
+    dispatch( logInAsync({
+      username: name,
+      password: pass
+    }));
+  }
+});
+
+export default connect( mapStateToProps, mapDispatchToProps )( Login );
