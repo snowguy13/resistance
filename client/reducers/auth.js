@@ -16,14 +16,12 @@ export default function( state = undefined, action ) {
       break;
 
     case AuthActions.LOG_IN_FAILURE:
-      nextState.lastAttempt = undefined;
       nextState.username = undefined;
       nextState.sessionStart = undefined;
       nextState.sessionEnd = undefined;
       break;
 
     case AuthActions.LOG_IN_SUCCESS:
-      nextState.lastAttempt = undefined;
       nextState.username = action.username;
       nextState.sessionStart = Date.now();
       nextState.sessionEnd = undefined;

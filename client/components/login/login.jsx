@@ -1,10 +1,13 @@
 import './login.scss';
 
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
 import Input from '../ui/input';
 import Button from '../ui/button';
 
 import { setContainer } from '../../actions/all';
+import { logInAsync } from '../../actions/auth';
 import { LOGIN } from '../../constants/container-types';
 
 class Login extends Component {
@@ -15,12 +18,18 @@ class Login extends Component {
     pass: ''
   }
 
-  canAuthenticate = () => {
+  canLogIn = () => {
     return !!this.state.name && !!this.state.pass;
   }
 
-  authenticate = () => {
+  logIn = () => {
     console.log(`Logging in as '${this.state.name}', password is ${this.state.pass}`);
+
+    // Send the log in request.
+    this.props.logIn({
+      name: this.state.name,
+      pass: this.state.pass
+    });
   }
 
   onInput = ( whichInput ) => ( newValue ) => {
@@ -32,16 +41,16 @@ class Login extends Component {
   onKeyDown = ( key ) => {
     // If [Enter] and all authentication conditions are met...
     if( key == 13 ) {
-      if( this.canAuthenticate() ) {
+      if( this.canLogIn() ) {
         // ... authenticate!
-        this.authenticate();
+        this.logIn();
       }
     }
   }
 
   render() {
-    const authDisabled = !this.canAuthenticate();
-    const { authenticate } = this;
+    const authDisabled = !this.canLogIn();
+    const { logIn } = this;
 
     return (
       <div className="Login">
@@ -63,7 +72,7 @@ class Login extends Component {
           <Button
             name="Login__Authenticate"
             disabled={ authDisabled }
-            onPressed={ authenticate }>
+            onPressed={ logIn }>
             Authenticate
           </Button>
           <Button name="Login__NewAgent">
@@ -77,10 +86,13 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    authenticate: ({ name, pass }) => {
-      dispatch( setContainer(type) );
+    logIn: ({ name, pass }) => {
+      dispatch( logInAsync({
+        username: name,
+        password: pass
+      }));
     }
   }
 }
 
-export default Login;
+export default connect( undefined, mapDispatchToProps )( Login );
