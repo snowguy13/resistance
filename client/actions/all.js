@@ -1,3 +1,4 @@
+import * as Auth from './auth';
 import * as Sockets from './sockets';
 
 export const SET_CONTAINER = 'SET_CONTAINER';
@@ -10,5 +11,6 @@ export function setContainer( containerType ) {
 
 export default {
   SET_CONTAINER, setContainer,
+  Auth,
   Sockets
 };
