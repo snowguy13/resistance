@@ -2,6 +2,17 @@ const WebSocket = require("ws");
 const httpServer = require("./http-server");
 const server = new WebSocket.Server({ server: httpServer });
 
+// Add a few convenience methods to the prototype.
+WebSocket.prototype.sendJson = function(data) {
+  this.send( JSON.stringify(data) );
+};
+
+WebSocket.Server.prototype.broadcast = function(data) {
+  this.clients.forEach(client => {
+    client.sendJson( data );
+  });
+};
+
 const onConnection = (ws) => {
   console.log("Received new connection");
 
@@ -27,16 +38,6 @@ const onClose = (ws) => {
     message: 'Lost a connection'
   });
 }
-
-WebSocket.prototype.sendJson = function(data) {
-  this.send( JSON.stringify(data) );
-};
-
-WebSocket.Server.prototype.broadcast = function(data) {
-  this.clients.forEach(client => {
-    client.sendJson( data );
-  });
-};
 
 server.on('connection', (ws) => {
   onConnection( ws );
