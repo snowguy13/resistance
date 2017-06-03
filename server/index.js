@@ -1,10 +1,11 @@
-const PORT = 8080;
+require('dotenv').config();
 
 const express = require('express');
-const app = express();
 const path = require('path');
 
+const app = express();
 const httpServer = require('./http-server');
+const PORT = process.env.HTTP_PORT;
 
 // We have to require this so it attaches to the HTTP server.
 require('./web-socket-server');
@@ -21,7 +22,6 @@ app.get('/', (req, res) => {
 app.use( (req, res) => {
   res.send(`You requested <strong>${req.url}</strong>.`);
 });
-
 
 httpServer.on('request', app);
 httpServer.listen( PORT, () => {

@@ -1,5 +1,8 @@
-const WebSocket = require("ws");
-const httpServer = require("./http-server");
+const WebSocket = require('ws');
+
+const auth = require('./auth');
+const httpServer = require('./http-server');
+
 const server = new WebSocket.Server({ server: httpServer });
 
 // Add a few convenience methods to the prototype.

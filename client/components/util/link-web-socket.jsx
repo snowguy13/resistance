@@ -26,7 +26,7 @@ const LinkWebSocket = ( WrappedComponent ) => {
         SOCKET_EVENTS.forEach(type => {
           const handler = bindings[ type ];
 
-          if( handler ) {
+          if( typeof handler === 'function' ) {
             socket.addEventListener( type, handler );
           }
         });

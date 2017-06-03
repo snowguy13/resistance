@@ -11,7 +11,7 @@ export function except( obj, props ) {
 export function map( obj, fn ) {
   const ret = {};
 
-  for( var prop in obj ) {
+  for( let prop in obj ) {
     ret[ prop ] = fn.call( ret, obj[prop], prop );
   }
 
