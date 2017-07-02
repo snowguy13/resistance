@@ -1,0 +1,43 @@
+@import 'colors';
+
+.Input {
+  position: relative;
+  font-size: 1rem;
+
+  .Input__Field {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.25em 0.75em;
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 200;
+
+    color: $ui-color-agent-lighter;
+    background-color: $ui-color-agent-darker;
+
+    border: 1px solid $ui-color-agent-darker;
+    border-radius: 0.25em;
+
+    transition-property: border-color, box-shadow;
+    transition-duration: 0.2s;
+
+    &::placeholder {
+      color: $ui-color-agent-light;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &.Input--focused .Input__Field {
+    border: 1px solid $ui-color-agent-lighter;
+    box-shadow: 0 0 0.5em $ui-color-agent-lightest;
+  }
+}

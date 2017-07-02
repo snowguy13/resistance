@@ -139,11 +139,11 @@ class Button extends Component {
       onKeyDown, onKeyUp,
     } = this;
 
-    const buttonChildren = renderHex(
+    /*const buttonChildren = renderHex(
       <div className="Button__Contents">
         { children }
       </div>
-    );
+    );*/
 
     return (<button
       ref="button"
@@ -157,7 +157,9 @@ class Button extends Component {
       onMouseUp={ onMouseUp }
       onKeyDown={ onKeyDown }
       onKeyUp={ onKeyUp }>
-      { buttonChildren }
+      <div className="Button__Contents">
+        { children }
+      </div>
     </button>);
   }
 };

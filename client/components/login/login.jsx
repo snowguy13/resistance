@@ -67,13 +67,13 @@ class Login extends Component {
         </div>
         <Input
           name="Login__AgentID"
-          label="Agent ID"
+          placeholder="Agent ID"
           onInput={ this.onInput('name') }
           onKeyDown={ this.onKeyDown } />
         <Input
           type="password"
           name="Login__AuthCode"
-          label="Auth Code"
+          placeholder="Auth Code"
           onInput={ this.onInput('pass') }
           onKeyDown={ this.onKeyDown } />
         <div className="Login__Buttons">

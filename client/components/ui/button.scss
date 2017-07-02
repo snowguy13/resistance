@@ -1,31 +1,62 @@
+@import 'colors';
+
 .Button {
   cursor: pointer;
-  
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
 
-  margin: 0;
-  padding: 0;
+  position: relative;
+
+  display: inline-block;
+  padding: 0 0.5em;
 
   font-family: inherit;
+  font-size: 1rem;
+  font-weight: 200;
 
-  background: none;
-  border: none;
+  color: $ui-color-agent-lighter;
+  background-color: $ui-color-agent-darker;
+  border: 2px solid transparent;
+  border-radius: 2px;
 
-  .Arrow {
-    display: inline-block;
-    height: 100%;
-    flex: 10px 0 0;
-  }
+  transition-property: background-color, transform;
+  transition-duration: 0.1s;
 
   .Button__Contents {
-    flex: auto 1 1;
-
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+  }
+
+  &:hover, &:focus {
+    z-index: 1;
+
+    outline: none;
+
+    background-color: $ui-color-agent-darkest;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    border: solid $ui-color-resistance;
+    border-width: 2px;
+  }
+
+  &.Button--pressed, &.Button--pressed:hover {
+    transform: scale(1.05);
+  }
+
+  &[disabled] {
+    cursor: default;
+
+    color: $ui-color-neutral-darker;
+    background-color: $ui-color-neutral-lighter;
+
+    &:hover {
+      transform: none;
+
+      background-color: $ui-color-neutral-lighter;
+    }
   }
 }

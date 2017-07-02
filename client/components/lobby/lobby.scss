@@ -1,0 +1,62 @@
+@import 'colors';
+
+.Lobby {
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+  height: 100%;
+}
+
+.Lobby__Sidebar {
+  padding: 10px;
+  background-color: $ui-color-agent-light;
+}
+
+.Lobby__Chat {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  flex-grow: 1;
+}
+
+.Lobby__Chat__Messages {
+  flex-grow: 1;
+  padding: 10px;
+  background-color: $ui-color-agent-lightest;
+}
+
+.Lobby__Chat__InputBox {
+  display: flex;
+  flex-direction: row;
+
+  font-size: 1.25rem;
+
+  background-color: $ui-color-agent-darker;
+
+  .Button {
+    margin: 0.5em;
+    font-size: inherit;
+    color: $ui-color-agent-darkest;
+    background-color: $ui-color-agent-lighter;
+  }
+
+  .Input {
+    flex-grow: 1;
+
+    font-size: inherit;
+  }
+
+  .Input__Field,
+  .Input--focused .Input__Field {
+    height: 100%;
+    /*padding-left: 0;*/
+    border-width: 0px;
+    box-shadow: none;
+  }
+
+  .Input__Field::placeholder {
+    color: $ui-color-agent-lighter;
+  }
+}

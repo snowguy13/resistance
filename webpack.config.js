@@ -15,8 +15,9 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['flow', 'es2015', 'react'],
           plugins: [
+            'syntax-trailing-function-commas',
             'transform-react-display-name',
             'transform-class-properties',
             'transform-es2015-destructuring',

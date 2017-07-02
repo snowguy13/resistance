@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build:watch": "webpack --progress --watch",
+    "flow": "flow",
     "start": "node ./server/index.js",
     "test": "npm run build:watch & npm run start"
   },
@@ -43,16 +44,19 @@
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
-    "babel-cli": "^6.9.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
+    "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.9.1",
     "babel-plugin-transform-es2015-destructuring": "^6.9.0",
     "babel-plugin-transform-function-bind": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
+    "flow-bin": "^0.49.1",
     "node-sass": "^3.8.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",

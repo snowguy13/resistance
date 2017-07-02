@@ -1,3 +1,5 @@
+import './input.scss';
+
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import classes from '../../utility/css-classes';
@@ -31,12 +33,11 @@ class Input extends Component {
     // and as the [for] attribute on the child <label> element
     name:  PropTypes.string.isRequired,
 
-    // Used as the text within the <label> element and as the
-    // <input> element's [placeholder] attribute
-    label: PropTypes.string.isRequired,
-
     // Used as the <input> element's [type] attribute
     type:  PropTypes.string,
+
+    // <input> element's [placeholder] attribute
+    placeholder: PropTypes.string,
 
     // Typical event bindings, applied to the child <input> element
     onFocus: PropTypes.func,
@@ -101,7 +102,7 @@ class Input extends Component {
 
   render() {
     const {
-      props: { name, label, type },
+      props: { name, placeholder, type },
       state: { focused, value },
       onFocus, onBlur, onInput, onKeyEvent
     } = this;
@@ -111,15 +112,11 @@ class Input extends Component {
         ['Input--empty']: !value,
         ['Input--focused']: focused,
       })}>
-        <label
-          className="Input__Label"
-          for={ name }>{ label }</label>
         <input
-          ref="input"
           className="Input__Field"
           name= { name }
           type={ type }
-          placeholder={ label }
+          placeholder={ placeholder }
           onFocus={ onFocus }
           onBlur={ onBlur }
           onInput={ onInput }
