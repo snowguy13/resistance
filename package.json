@@ -8,6 +8,7 @@
     "build:watch": "webpack --progress --watch",
     "flow": "flow",
     "start": "node ./server/index.js",
+    "prestart": "npm run build",
     "test": "npm run build:watch & npm run start"
   },
   "repository": {
@@ -15,7 +16,6 @@
     "url": "https://github.com/snowguy13/resistance.git"
   },
   "keywords": [
-    "\"The",
     "Resistance\"",
     "deception",
     "agent",
