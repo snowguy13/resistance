@@ -10,7 +10,7 @@
 
 .Lobby__Sidebar {
   padding: 10px;
-  background-color: $ui-color-agent-light;
+  background-color: $ui-color-agent-dark;
 }
 
 .Lobby__Chat {
@@ -24,39 +24,52 @@
 .Lobby__Chat__Messages {
   flex-grow: 1;
   padding: 10px;
-  background-color: $ui-color-agent-lightest;
+  background-color: $ui-color-neutral-lightest;
 }
 
 .Lobby__Chat__InputBox {
   display: flex;
   flex-direction: row;
 
+  padding: 0.5em;
+
   font-size: 1.25rem;
 
-  background-color: $ui-color-agent-darker;
+  background-color: $ui-color-neutral-lightest;
 
   .Button {
-    margin: 0.5em;
+    margin: 0 0 0 0.5em;
+    align-self: center;
     font-size: inherit;
-    color: $ui-color-agent-darkest;
-    background-color: $ui-color-agent-lighter;
   }
 
   .Input {
     flex-grow: 1;
-
+    align-self: stretch;
     font-size: inherit;
   }
 
   .Input__Field,
   .Input--focused .Input__Field {
     height: 100%;
-    /*padding-left: 0;*/
-    border-width: 0px;
-    box-shadow: none;
+    padding: 0.25em 0.5em;
+    color: $ui-color-agent-light;
+    background-color: white;
+    box-shadow: 0 0.05em 0.25em $ui-color-neutral-light;
+  }
+
+  .Input__Field {
+    border: 1px solid transparent;
+    transition-property: border-color, box-shadow;
+    transition-duration: 0.2s;
+  }
+
+  .Input--focused .Input__Field {
+    border-color: $ui-color-resistance-light;
+    box-shadow: 0 0.05em 0.25em $ui-color-resistance-light;
   }
 
   .Input__Field::placeholder {
-    color: $ui-color-agent-lighter;
+    color: $ui-color-agent-light;
   }
 }

@@ -23,11 +23,11 @@ class Login extends Component {
     pass: ''
   }
 
-  canLogIn = () => {
+  _canLogIn = () => {
     return !this.props.pendingAttempt && !!this.state.name && !!this.state.pass;
   }
 
-  logIn = () => {
+  _logIn = () => {
     console.log(`Logging in as '${this.state.name}', password is ${this.state.pass}`);
 
     // Send the log in request.
@@ -37,13 +37,13 @@ class Login extends Component {
     });
   }
 
-  onInput = ( whichInput ) => ( newValue ) => {
+  _onInput = ( whichInput ) => ( newValue ) => {
     this.setState({
       [whichInput]: newValue,
     });
   }
 
-  onKeyDown = ( key ) => {
+  _onKeyDown = ( key ) => {
     // If [Enter] and all authentication conditions are met...
     if( key == 13 ) {
       if( this.canLogIn() ) {
@@ -54,10 +54,11 @@ class Login extends Component {
   }
 
   render() {
-    const authDisabled = !this.canLogIn();
+    const authDisabled = !this._canLogIn();
     const {
-      logIn,
-      props: { pendingAttempt }
+      props: { pendingAttempt },
+      state: { name, pass },
+      _logIn,
     } = this;
 
     return (
@@ -68,19 +69,21 @@ class Login extends Component {
         <Input
           name="Login__AgentID"
           placeholder="Agent ID"
-          onInput={ this.onInput('name') }
-          onKeyDown={ this.onKeyDown } />
+          value={ name }
+          onInput={ this._onInput('name') }
+          onKeyDown={ this._onKeyDown } />
         <Input
           type="password"
           name="Login__AuthCode"
           placeholder="Auth Code"
-          onInput={ this.onInput('pass') }
-          onKeyDown={ this.onKeyDown } />
+          value={ pass }
+          onInput={ this._onInput('pass') }
+          onKeyDown={ this._onKeyDown } />
         <div className="Login__Buttons">
           <Button
             name="Login__Authenticate"
             disabled={ authDisabled }
-            onPressed={ logIn }>
+            onPress={ _logIn }>
             { pendingAttempt ? "Logging in..." : "Authenticate" }
           </Button>
           <Button

@@ -37,7 +37,7 @@
   }
 
   &.Input--focused .Input__Field {
-    border: 1px solid $ui-color-agent-lighter;
-    box-shadow: 0 0 0.5em $ui-color-agent-lightest;
+    border: 1px solid $ui-color-resistance-light;
+    box-shadow: 0 0 0.5em $ui-color-resistance-lighter;
   }
 }

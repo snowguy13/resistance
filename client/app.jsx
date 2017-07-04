@@ -16,14 +16,11 @@ if( !window.WebSocket ) {
    + "Unfortunately, they're needed to run this game, so you're out of luck!";
 } else {
   // Otherwise, create the store...
-  let store = createStore(
-    reducers,
-    {},
-    compose(
-      applyMiddleware( reduxThunk ),
-      window.devToolsExtension ? window.devToolsExtension() : () => {}
-    )
-  );
+  const createStoreWithMiddleware = compose(
+    applyMiddleware( reduxThunk ),
+    window.devToolsExtension ? window.devToolsExtension() : (x) => x
+  )( createStore );
+  const store = createStoreWithMiddleware( reducers, {} );
 
   // ...and launch the app.
   render(

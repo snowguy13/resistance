@@ -12,7 +12,7 @@ import './button.scss';
 
 /**
  * A simple component for creating buttons. Only supports
- * an 'onPressed' event, which is fired when the underlying
+ * an 'onPress' event, which is fired when the underlying
  * <button> is clicked or (optionally) when it is Focused
  * and [Enter] is pressed. A special 'pressed' CSS modifier
  * is also provided to encompass clicking and [Enter]-pressing.
@@ -34,7 +34,7 @@ class Button extends Component {
 
   static propTypes = {
     // Used as the [name] attribute on the underlying <button>
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
 
     // Used for the <button> element's [disabled] attribute
     disabled: PropTypes.bool,
@@ -46,13 +46,13 @@ class Button extends Component {
     // Fired when the <button> is clicked or, if [enterPress]
     // is set to 'true', when [Enter] is pressed while the
     // button is focused
-    onPressed: PropTypes.func,
+    onPress: PropTypes.func,
   }
 
   static defaultProps = {
     disabled: false,
     enterPress: true,
-    onPressed: NOOP,
+    onPress: NOOP,
   }
 
   constructor( props ) {
@@ -70,16 +70,16 @@ class Button extends Component {
   }
 
   onMouseUp = () => {
-    const { onPressed } = this.props;
+    const { onPress } = this.props;
     const { enterPressed } = this.state;
 
     // Update state
     this.setState({ mouseDown: false });
 
-    // And fire the onPressed event, so long as the
+    // And fire the onPress event, so long as the
     // [Enter] key is not pressed
     if( !enterPressed ) {
-      onPressed();
+      onPress();
     }
   }
 
@@ -99,7 +99,7 @@ class Button extends Component {
 
   onKeyUp = ( ev ) => {
     const key = ev.keyCode || ev.which;
-    const { enterPress, onPressed } = this.props;
+    const { enterPress, onPress } = this.props;
     const { mouseDown } = this.state;
 
     switch( key ) {
@@ -109,10 +109,10 @@ class Button extends Component {
           // Update state
           this.setState({ enterPressed: false });
 
-          // And fire the onPressed event, so long as the
+          // And fire the onPress event, so long as the
           // mouse is not also pressed on the button
           if( !mouseDown ) {
-            onPressed();
+            onPress();
           }
         }
         break;

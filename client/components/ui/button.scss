@@ -14,11 +14,11 @@
 
   color: $ui-color-agent-lighter;
   background-color: $ui-color-agent-darker;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 2px;
 
   transition-property: background-color, transform;
-  transition-duration: 0.1s;
+  transition-duration: 0.2s;
 
   .Button__Contents {
     display: flex;
@@ -39,8 +39,8 @@
   }
 
   &:focus {
-    border: solid $ui-color-resistance;
-    border-width: 2px;
+    border-color: $ui-color-resistance-light;
+    box-shadow: 0 0 0.5em $ui-color-resistance-lighter;
   }
 
   &.Button--pressed, &.Button--pressed:hover {

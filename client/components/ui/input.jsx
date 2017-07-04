@@ -29,12 +29,14 @@ class Input extends Component {
   static displayName = 'Input'
 
   static propTypes = {
-    // Used as the [name] attribute for the child <input> element,
-    // and as the [for] attribute on the child <label> element
-    name:  PropTypes.string.isRequired,
+    // Used as the [name] attribute for the child <input> element
+    name:  PropTypes.string,
 
     // Used as the <input> element's [type] attribute
     type:  PropTypes.string,
+
+    // Used as the element's [value] attribute
+    value: PropTypes.string,
 
     // <input> element's [placeholder] attribute
     placeholder: PropTypes.string,
@@ -50,6 +52,8 @@ class Input extends Component {
 
   static defaultProps = {
     type: DEFAULT_TYPE,
+    value: '',
+    placeholder: '',
     onInput: NOOP,
     onFocus: NOOP,
     onBlur: NOOP,
@@ -58,16 +62,21 @@ class Input extends Component {
     onKeyPress: NOOP,
   }
 
+  _input: HTMLInputElement;
+
   constructor( props ) {
     super( props );
 
     this.state = {
       focused: false,
-      value: '',
     }
   }
 
-  onFocus = () => {
+  focus(): void {
+    this.refs._input.focus();
+  }
+
+  _onFocus = () => {
     // Update state
     this.setState({ focused: true });
 
@@ -75,7 +84,7 @@ class Input extends Component {
     this.props.onFocus();
   }
 
-  onBlur = () => {
+  _onBlur = () => {
     // Update state
     this.setState({ focused: false });
 
@@ -83,17 +92,12 @@ class Input extends Component {
     this.props.onBlur();
   }
 
-  onInput = ( ev ) => {
-    const newValue = ev.target.value;
-
-    // Update state
-    this.setState({ value: newValue });
-
+  _onInput = ( ev ) => {
     // Invoke the given handler
-    this.props.onInput( newValue );
+    this.props.onInput( ev.target.value );
   }
 
-  onKeyEvent = ( type ) => ( ev ) => {
+  _onKeyEvent = ( type ) => ( ev ) => {
     const key = ev.keyCode || ev.which;
 
     // Invoke the handler with the event's key code.
@@ -102,9 +106,9 @@ class Input extends Component {
 
   render() {
     const {
-      props: { name, placeholder, type },
-      state: { focused, value },
-      onFocus, onBlur, onInput, onKeyEvent
+      props: { name, placeholder, type, value },
+      state: { focused },
+      _onFocus, _onBlur, _onInput, _onKeyEvent
     } = this;
 
     return (
@@ -113,16 +117,18 @@ class Input extends Component {
         ['Input--focused']: focused,
       })}>
         <input
+          ref={el => this._input = el}
           className="Input__Field"
           name= { name }
           type={ type }
+          value={ value }
           placeholder={ placeholder }
-          onFocus={ onFocus }
-          onBlur={ onBlur }
-          onInput={ onInput }
-          onKeyDown={ onKeyEvent('onKeyDown') }
-          onKeyUp={ onKeyEvent('onKeyUp') }
-          onKeyPress={ onKeyEvent('onKeyPress') }/>
+          onFocus={ _onFocus }
+          onBlur={ _onBlur }
+          onInput={ _onInput }
+          onKeyDown={ _onKeyEvent('onKeyDown') }
+          onKeyUp={ _onKeyEvent('onKeyUp') }
+          onKeyPress={ _onKeyEvent('onKeyPress') }/>
       </div>
     );
   }
