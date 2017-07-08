@@ -2,5 +2,5 @@
 keys/
 node_modules/
 npm-debug.log
-public/app.bundle.js
-public/app.bundle.js.map
+public/resistance.bundle.js
+public/resistance.bundle.js.map

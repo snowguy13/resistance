@@ -6,7 +6,7 @@ module.exports = {
   entry: './client/app.jsx',
   output: {
     path: './public',
-    filename: 'app.bundle.js',
+    filename: 'resistance.bundle.js',
   },
   module: {
     loaders: [
